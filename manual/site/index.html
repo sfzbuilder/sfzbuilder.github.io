@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="None">
+        
+        
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>SFZBuilder Manual</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/fontawesome.min.css" rel="stylesheet">
+        <link href="css/brands.min.css" rel="stylesheet">
+        <link href="css/solid.min.css" rel="stylesheet">
+        <link href="css/v4-font-face.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body class="homepage">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href=".">SFZBuilder Manual</a>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#welcome-to-sfzbuilder-manual" class="nav-link">Welcome to SFZBuilder Manual</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#getting-started" class="nav-link">Getting started</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#simple-introduction-to-sfz" class="nav-link">Simple introduction to SFZ</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#sfz-structure-used" class="nav-link">SFZ structure used</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#sfzbuilder-interface" class="nav-link">SFZBuilder interface</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="welcome-to-sfzbuilder-manual">Welcome to SFZBuilder Manual</h1>
+<p>Here you will find all the features SFZBuilder can offer.</p>
+<h2 id="getting-started">Getting started</h2>
+<ol>
+<li>Download <a href="https://github.com/michael02022/sfzbuilder">SFZBuilder</a> (can be the compiled binaries or directly from Python source code)</li>
+<li><a href="https://github.com/michael02022/sfzbuilder-init-folder">Get the init folder</a></li>
+</ol>
+<p>Now you can install SFZPacks. A SFZPack is a collection of mappings and presets that SFZBuilder can load and use them.</p>
+<p>A good start are:</p>
+<ul>
+<li><a href="https://huggingface.co/datasets/michl1149/SFZBuilder-Factory-Library-Demo/resolve/main/SFZBuilder%20Factory%20Library%20Demo.zip?download=true">SFZBuilder Factory Library DEMO</a></li>
+<li><a href="https://github.com/sfzbuilder/sfzpack-gm.dls">gm.dls</a> (need sample extraction)</li>
+<li><a href="https://github.com/sfzbuilder/sfzpack-Fairlight_IIx">Fairlight IIx</a></li>
+</ul>
+<p>After you have some stuff to work with, run SFZBuilder.</p>
+<p>Now in <kbd>Main Folder</kbd> button, select the init folder you downloaded before and installed SFZPacks and restart the software. Now you're ready.</p>
+<h2 id="simple-introduction-to-sfz">Simple introduction to SFZ</h2>
+<p>SFZ is designed to be human readable enough and easy to edit for end users (no need for anything special other than a text editor). Although the standard is giving a whole Graphical User Interface to end users to design and tweak the settings for their samples.</p>
+<p>SFZBuilder let you have the best of both worlds: the flexibility and freedom of a text based format and the convenience of a Graphical User Interface to design sounds.</p>
+<p>You have the SFZ file, where the information is stored, and then the SFZ Player, which is the engine that let you hear what you have in a SFZ file.</p>
+<p>SFZBuilder covers the two main players: <a href="https://github.com/sfztools/sfizz-ui/releases">sfizz</a> and <a href="https://www.plogue.com/products/sforzando.html">Sforzando</a>, <em>all of them free of charge.</em></p>
+<p>The syntax is very simple, there are two types: the <em>header</em> and the <em>opcode</em></p>
+<p>The header is the way to assing opcodes, the most basic one being <code>&lt;region&gt;</code>.</p>
+<p>The name explains itself, is where you set the regions for your samples.</p>
+<p>Under any region, you have to write opcodes, the structure of a opcode is <code>type_of_data=value</code></p>
+<p>Example:</p>
+<pre><code>&lt;region&gt; sample=my/path/to/sample.wav lokey=60 hikey=72 lovel=50 hivel=80 // and so on...
+</code></pre>
+<p>If you do not write one of the hundred of opcodes, the SFZ player will set the default values of each one automatically for you.</p>
+<p>There are other headers than <code>&lt;region&gt;</code>, such as <code>&lt;group&gt;</code> which essentially is "every opcode I write under this header, will be heredated to the regions"</p>
+<p>This is the most basic introduction, for detailed information and the full list of documented opcodes, check the <a href="https://sfzformat.com/">sfz format website</a></p>
+<h2 id="sfz-structure-used">SFZ structure used</h2>
+<p>SFZBuilder has this hierarchy using the available headers of the SFZ format, being:</p>
+<table>
+<thead>
+<tr>
+<th>header</th>
+<th>usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;global&gt;</code></td>
+<td>for values that needs to be applied to <strong>all</strong> mappings</td>
+</tr>
+<tr>
+<td><code>&lt;master&gt;</code></td>
+<td>every configuration for each individual mapping</td>
+</tr>
+<tr>
+<td><code>&lt;group&gt;</code></td>
+<td>header to enable FX tricks using a pitch LFO (it duplicates the same mapping but with different configurations)</td>
+</tr>
+<tr>
+<td><code>&lt;region&gt;</code></td>
+<td>the sample and mapping information, being a SFZ file called from <code>MappingPool</code> folder</td>
+</tr>
+</tbody>
+</table>
+<h2 id="sfzbuilder-interface">SFZBuilder interface</h2>
+<h3 id="1-sfz-info">1. SFZ info</h3>
+<ul>
+<li>
+<p><kbd>Autoname</kbd>: once pressed, it will extract the name of the current mapping the user has selected in the <code>List of mappings</code>, as a shortcut for file names.</p>
+</li>
+<li>
+<p><b>SFZ Name</b>: here you write the name you want for your SFZ preset.</p>
+</li>
+<li>
+<p><b>Author</b>: here you write your name or nickname, you can set a default one where SFZBuilder will load it everytime it runs through the <kbd>Set Default</kbd> button.</p>
+</li>
+</ul>
+<h3 id="2-global">2. Global</h3>
+<p>This section is for everything that is set under the <code>&lt;global&gt;</code> header.</p>
+<ul>
+<li><b>Keyswitch</b>: You set the global range of such keyswitchs and the default key for it.</li>
+<li><strong>Oversampling</strong>: This one is exclusive from Sforzando. It's using the opcode  <code>hint_min_samplerate</code>. The purpose is to reduce aliasing for high frequencies.</li>
+<li><strong>Portamento</strong>: This one uses a template available in <em>Opcodes</em> tab. You set the time of such portamento or assign a <em>Continuous Controller</em> to set it.</li>
+</ul>
+<h3 id="3-mappings">3. Mappings</h3>
+<p><strong>Type of map selector</strong>: Here you select which kind of map you want to load.</p>
+<ol>
+<li><strong>Map</strong>: melodic mappings, it is a collection of regions.</li>
+<li><strong>Percussion</strong>: percussive mappings, this one is intended to be customizable the root note of the samples to create your own percussion mappings.</li>
+<li><strong>Wavetable</strong>: mappings where it uses a wavetable WAV file or a collection of wavetables inside a SFZ file as regions using the opcode <code>oscillator_on</code>. <em>This feature is implemented correctly only in</em> <strong>sfizz.</strong></li>
+</ol>
+<h3 id="4-mapping-features">4. Mapping features</h3>
+<ol>
+<li><strong>Volume</strong>: Set the volume of the mapping.</li>
+<li><strong>Mute Map</strong>: Mutes the map. Useful when debugging a preset.</li>
+<li><strong>Key</strong>: This one sets a key range of the mapping. It uses the <code>locc</code> <code>hicc</code> opcode with the extended CC <strong>133</strong></li>
+<li>
+<p><strong>Vel</strong>: This one sets a velocity range of the mapping. It uses the <code>locc</code> <code>hicc</code> opcode with the extended CC <strong>131</strong>.
+<strong>NOTE:</strong>
+This opcode with extended CC (131) doesn't mute the last sample when switching between velocities, this is not helpful for certain contexts or could have polyphony issues.</p>
+</li>
+<li>
+<p><strong>note on</strong>: This one let you set a range of CC where the regions of the mapping can be played if is under that value range. Normally used to switch between pedal and sustain mappings in pianos.</p>
+</li>
+<li><strong>Program Change</strong>: It let you set a program change to the mapping if enabled. This is useful to create a Soundfont style bank in a SFZ file. There's a box where you have a list of <code>.ins</code> files to select with <em>Cakewalk's Instrument Definition specification</em> that gives a name for each program change value. The factory ones are <strong>General MIDI</strong> and <strong>Roland MT-32</strong>. <strong>NOTE FOR SFIZZ USERS:</strong> <em>The program change feature is implemented only in the LV2 version.</em></li>
+</ol>
+<h3 id="5-mapping-list">5. Mapping List</h3></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = ".",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="js/base.js"></script>
+        <script src="search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
+
+<!--
+MkDocs version : 1.6.1
+Build Date UTC : 2024-12-07 04:22:19.094648+00:00
+-->
