@@ -85,6 +85,8 @@ This section is for everything that is set under the `<global>` header.
 2. **Percussion**: percussive mappings, this one is intended to be customizable the root note of the samples to create your own percussion mappings.
 3. **Wavetable**: mappings where it uses a wavetable WAV file or a collection of wavetables inside a SFZ file as regions using the opcode `oscillator_on`. *This feature is implemented correctly only in* **sfizz.**
 
+The maps to select are based on **PACK** and then **MAP**. You can scroll with the mouse wheel or click it to browse all the mappings.
+
 ### 4. Mapping features
 1. **Volume**: Set the volume of the mapping.
 2. **Mute Map**: Mutes the map. Useful when debugging a preset.
@@ -97,4 +99,45 @@ This opcode with extended CC (131) doesn't mute the last sample when switching b
 6. **Program Change**: It let you set a program change to the mapping if enabled. This is useful to create a Soundfont style bank in a SFZ file. There's a box where you have a list of `.ins` files to select with *Cakewalk's Instrument Definition specification* that gives a name for each program change value. The factory ones are **General MIDI** and **Roland MT-32**. **NOTE FOR SFIZZ USERS:** *The program change feature is implemented only in the LV2 version.*
 
 ### 5. Mapping List
+The mapping list has 6 buttons:
+
+1. **+ Mapping:** It adds a mapping with the default indexes of PACK+MAP.
+2. **- Delete**: It deletes the selected mapping.
+3. **Clone:** It clones the selected mapping with all the configuration.
+4. **Import:** You select a `.sfzproj` file and then choose the mappings you want to import with the whole configuration. You have to make sure the imported mapping includes the PACK+MAP needed for it, otherwise it will load the default one.
+5. **Up/Down:** Move the mapping to certain hierarchy. **NOTE:** If you're stacking Wavetables and samples (Map/Percussion) you must put every wavetable map as first in the list to make it work.
+
+### 6. Mapping Values
+In this section, you specify every aspect that SFZ can give in the selected mapping.
+
+#### 6.1. Map
+1. **Comment:** Here is where you write a commment about the mapping. Useful to have reference what is this mapping about, for example: `sustain notes`, `release map`, `dry chorus map`, ...
+1. **Output:** It sets the bus output of the mapping. *Sfizz* supports 8 output audio channels that can be mapped in your DAW. This is useful for anything related to drums (separate the outputs of drums, cymbals, mic positions, ...)
+1. **Stereo Width:** Let you manipulate the stereo effect of the samples in the mapping, being the value 0 mono. Of course, only works with stereo samples.
+1. **Use Tuned Variant Instead:** This checkbox is special and only is enabled if the selected mapping includes a tuned version of it. The reason for this feature is because there are people who prefer the natural tunning of the instruments and others prefer to have them perfectly tuned with the `tune` opcode. In the SFZ files, the tuned mappings has the exact name but with a ` --TN` suffix.
+
+Polyphony
+
+1. **Polyphony:** It sets the polyphony limit of the mapping. This is helpful to optimize the polyphony in drums. Be careful when using the **FX LFO** feature, depending on the mode, you will need to have 2, 3 or even 4 polyphony per note in the mappping.
+1. **[Note Polyphony:](https://sfzformat.com/opcodes/note_polyphony/)** Polyphony limit for playing the same note repeatedly.
+1. **[Note Selfmask:](https://sfzformat.com/opcodes/note_selfmask/)** Controls note-stealing behavior for a single pitch, when using Note Polyphony.
+
+Trigger
+
+1. **[Mode:](https://sfzformat.com/opcodes/trigger/)** Sets the trigger mode of the mapping. For example, for a release mapping, you should select `release`. The other modes are used in advanced mappings with [true legato](https://sfzformat.com/tutorials/legato/) samples.
+1. **[rt_dead:](https://sfzformat.com/opcodes/rt_dead/)** Controls whether a release sample should play if its sustain sample has ended, or not.
+1. **[rt_decay:](https://sfzformat.com/opcodes/rt_decay/)** Applies only to regions that triggered through trigger=release. The volume decrease (in decibels) per seconds after the corresponding attack region was triggered.
+
+Keyswitch: This works if you enable keyswitch from Global.
+
+1. **Key:** Sets the specific key where the mapping will be enabled.
+1. **Label:** Sets the label of such keyswitch, useful for the end user to know which key enables which.
+
+Key/Percussion
+
+1. **Set 'pitch_keycenter':** This works if you use a Percussion mapping. It let you set the root note of the drum/percussive instrument.
+1. **Use 'key' opcode instead:** This works if you enabled pitch_keycenter, basically replaces such opcode with `key` which set the mapping to be played **only in the defined root note.**
+
+Wavetable: This section is enabled if you use a Wavetable mapping/wav file.
+
 

@@ -164,6 +164,7 @@
 <li><strong>Percussion</strong>: percussive mappings, this one is intended to be customizable the root note of the samples to create your own percussion mappings.</li>
 <li><strong>Wavetable</strong>: mappings where it uses a wavetable WAV file or a collection of wavetables inside a SFZ file as regions using the opcode <code>oscillator_on</code>. <em>This feature is implemented correctly only in</em> <strong>sfizz.</strong></li>
 </ol>
+<p>The maps to select are based on <strong>PACK</strong> and then <strong>MAP</strong>. You can scroll with the mouse wheel or click it to browse all the mappings.</p>
 <h3 id="4-mapping-features">4. Mapping features</h3>
 <ol>
 <li><strong>Volume</strong>: Set the volume of the mapping.</li>
@@ -179,7 +180,47 @@ This opcode with extended CC (131) doesn't mute the last sample when switching b
 </li>
 <li><strong>Program Change</strong>: It let you set a program change to the mapping if enabled. This is useful to create a Soundfont style bank in a SFZ file. There's a box where you have a list of <code>.ins</code> files to select with <em>Cakewalk's Instrument Definition specification</em> that gives a name for each program change value. The factory ones are <strong>General MIDI</strong> and <strong>Roland MT-32</strong>. <strong>NOTE FOR SFIZZ USERS:</strong> <em>The program change feature is implemented only in the LV2 version.</em></li>
 </ol>
-<h3 id="5-mapping-list">5. Mapping List</h3></div>
+<h3 id="5-mapping-list">5. Mapping List</h3>
+<p>The mapping list has 6 buttons:</p>
+<ol>
+<li><strong>+ Mapping:</strong> It adds a mapping with the default indexes of PACK+MAP.</li>
+<li><strong>- Delete</strong>: It deletes the selected mapping.</li>
+<li><strong>Clone:</strong> It clones the selected mapping with all the configuration.</li>
+<li><strong>Import:</strong> You select a <code>.sfzproj</code> file and then choose the mappings you want to import with the whole configuration. You have to make sure the imported mapping includes the PACK+MAP needed for it, otherwise it will load the default one.</li>
+<li><strong>Up/Down:</strong> Move the mapping to certain hierarchy. <strong>NOTE:</strong> If you're stacking Wavetables and samples (Map/Percussion) you must put every wavetable map as first in the list to make it work.</li>
+</ol>
+<h3 id="6-mapping-values">6. Mapping Values</h3>
+<p>In this section, you specify every aspect that SFZ can give in the selected mapping.</p>
+<h4 id="61-map">6.1. Map</h4>
+<ol>
+<li><strong>Comment:</strong> Here is where you write a commment about the mapping. Useful to have reference what is this mapping about, for example: <code>sustain notes</code>, <code>release map</code>, <code>dry chorus map</code>, ...</li>
+<li><strong>Output:</strong> It sets the bus output of the mapping. <em>Sfizz</em> supports 8 output audio channels that can be mapped in your DAW. This is useful for anything related to drums (separate the outputs of drums, cymbals, mic positions, ...)</li>
+<li><strong>Stereo Width:</strong> Let you manipulate the stereo effect of the samples in the mapping, being the value 0 mono. Of course, only works with stereo samples.</li>
+<li><strong>Use Tuned Variant Instead:</strong> This checkbox is special and only is enabled if the selected mapping includes a tuned version of it. The reason for this feature is because there are people who prefer the natural tunning of the instruments and others prefer to have them perfectly tuned with the <code>tune</code> opcode. In the SFZ files, the tuned mappings has the exact name but with a <code>--TN</code> suffix.</li>
+</ol>
+<p>Polyphony</p>
+<ol>
+<li><strong>Polyphony:</strong> It sets the polyphony limit of the mapping. This is helpful to optimize the polyphony in drums. Be careful when using the <strong>FX LFO</strong> feature, depending on the mode, you will need to have 2, 3 or even 4 polyphony per note in the mappping.</li>
+<li><strong><a href="https://sfzformat.com/opcodes/note_polyphony/">Note Polyphony:</a></strong> Polyphony limit for playing the same note repeatedly.</li>
+<li><strong><a href="https://sfzformat.com/opcodes/note_selfmask/">Note Selfmask:</a></strong> Controls note-stealing behavior for a single pitch, when using Note Polyphony.</li>
+</ol>
+<p>Trigger</p>
+<ol>
+<li><strong><a href="https://sfzformat.com/opcodes/trigger/">Mode:</a></strong> Sets the trigger mode of the mapping. For example, for a release mapping, you should select <code>release</code>. The other modes are used in advanced mappings with <a href="https://sfzformat.com/tutorials/legato/">true legato</a> samples.</li>
+<li><strong><a href="https://sfzformat.com/opcodes/rt_dead/">rt_dead:</a></strong> Controls whether a release sample should play if its sustain sample has ended, or not.</li>
+<li><strong><a href="https://sfzformat.com/opcodes/rt_decay/">rt_decay:</a></strong> Applies only to regions that triggered through trigger=release. The volume decrease (in decibels) per seconds after the corresponding attack region was triggered.</li>
+</ol>
+<p>Keyswitch: This works if you enable keyswitch from Global.</p>
+<ol>
+<li><strong>Key:</strong> Sets the specific key where the mapping will be enabled.</li>
+<li><strong>Label:</strong> Sets the label of such keyswitch, useful for the end user to know which key enables which.</li>
+</ol>
+<p>Key/Percussion</p>
+<ol>
+<li><strong>Set 'pitch_keycenter':</strong> This works if you use a Percussion mapping. It let you set the root note of the drum/percussive instrument.</li>
+<li><strong>Use 'key' opcode instead:</strong> This works if you enabled pitch_keycenter, basically replaces such opcode with <code>key</code> which set the mapping to be played <strong>only in the defined root note.</strong></li>
+</ol>
+<p>Wavetable: This section is enabled if you use a Wavetable mapping/wav file.</p></div>
             </div>
         </div>
 
@@ -261,5 +302,5 @@ This opcode with extended CC (131) doesn't mute the last sample when switching b
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2024-12-07 04:22:19.094648+00:00
+Build Date UTC : 2024-12-19 15:57:06.098156+00:00
 -->
